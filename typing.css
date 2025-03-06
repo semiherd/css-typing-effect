@@ -1,0 +1,60 @@
+:root{
+    --cursor-color: rgb(186, 180, 180);
+    --typing-duration: 12s;
+    --typing-steps: 120;
+    --blink-frequency: 0.75s;
+    --typing-color:  rgb(47, 78, 151);
+    --container-width: 90vw;
+    --typing-iteration: infinite;
+    --typing-direction: alternate;
+    --font-size: 2rem;
+    --span-font-size: 2.5rem;
+}   
+body{
+    background: #0008 url(photo-one.jpg) center/cover;
+    background-size: cover;
+    background-blend-mode:lighten;
+}
+.container{
+    width:var(--container-width);
+    
+}
+.text{ 
+    display: inline-block;
+    margin: 0;
+    font-size: var(--font-size);
+    letter-spacing: 0.2vw;
+}
+p{
+    align-items: center;
+    text-align: flex-start;
+    font-size: var(--font-size);
+    margin-top: 0%;
+    color: rgb(76, 70, 79);
+}
+p span{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: nowrap; 
+    color: var(--typing-color);
+    font-size: var(--span-font-size);
+    overflow: hidden;
+    border-right: .1em solid var(--cursor-color);
+    animation: blink var(--blink-frequency) steps(1,end) infinite,
+        typing var(--typing-duration) steps(var(--typing-steps))  var(--typing-iteration) var(--typing-direction);
+}
+
+
+@keyframes typing {
+    0%,10% { width: 0 }
+    90%,100% { width: 99% }
+}
+@keyframes blink {
+    0%,100%{
+        border-color: var(--cursor-color);
+    }
+    50% { 
+        border-color: transparent;
+    }
+}
