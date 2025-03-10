@@ -1,10 +1,10 @@
 :root{
     --cursor-color: rgb(186, 180, 180);
-    --typing-duration: 12s;
-    --typing-steps: 120;
+    --typing-duration: 3s;
+    --typing-steps:15;
     --blink-frequency: 0.75s;
     --typing-color:  rgb(47, 78, 151);
-    --container-width: 90vw;
+    --container-width: 100%;
     --typing-iteration: infinite;
     --typing-direction: alternate;
     --font-size: 2rem;
@@ -15,15 +15,18 @@ body{
     background-size: cover;
     background-blend-mode:lighten;
 }
-.container{
+.container-one{
+    transform: translateX(25vw);
+}
+.container-two{
+    transform: translateX(25vw);
     width:var(--container-width);
-    
 }
 .text{ 
     display: inline-block;
     margin: 0;
     font-size: var(--font-size);
-    letter-spacing: 0.2vw;
+    letter-spacing: 0.25vw;
 }
 p{
     align-items: center;
@@ -57,4 +60,29 @@ p span{
     50% { 
         border-color: transparent;
     }
+}
+
+.type {
+    display: inline-flex;
+    font-size: var(--span-font-size);
+}
+.type span {
+    word-break: break-all;
+    height: 1.2em;
+    width: 0%;
+    color: magenta;
+    font-weight: 600;
+    max-width:max-content;
+    overflow: hidden;
+    font-size: var(--span-font-size);
+    border-right: .1em solid var(--cursor-color);
+    animation:  typing var(--typing-duration) linear  var(--typing-iteration) var(--typing-direction),
+        blink var(--blink-frequency) steps(1,end) infinite;
+}
+.type span:before {
+  content:" ";
+  display:inline-block;
+}
+@keyframes typing-width{
+    90%,100% {width:100%}
 }
